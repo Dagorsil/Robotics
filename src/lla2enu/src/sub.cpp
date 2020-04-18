@@ -73,8 +73,11 @@ void chatterCallback(const sensor_msgs::NavSatFix::ConstPtr& msg){
 
   ROS_INFO("ENU position: [%f,%f, %f]", xEast, yNorth,zUp);
   
-  geometry_msgs::Vector3Stamped position;
-  //return  *position; ???????????
+  // NEW COORDINATES
+  msg->latitude = xEast;
+  msg->longitude = yNorth;
+  msg->altitude = zUp;
+  
   
 }
 
@@ -84,27 +87,30 @@ void callback(const geometry_msgs::Vector3StampedConstPtr& msg1, const geometry_
   ROS_INFO ("Received two messages: (%f,%f,%f) and (%f,%f,%f)", msg1->vector.x,msg1->vector.y,msg1->vector.z, msg2->vector.x, msg2->vector.y, msg2->vector.z);
 
 	//CONVERTING THE CAR POSITION 
-	geometry_msgs::Vector3Stamped position_car;
-	position_car = chatterCallback(msg1);
+	//geometry_msgs::Vector3Stamped position_car;
+	//position_car = chatterCallback(msg1);
+	
+	chatterCallback(msg1);
+	chatterCallback(msg2);
+	
 	
 	//CONVERTING THE OBSTACLE POSITION 
-	geometry_msgs::Vector3Stamped position_obstacle;
-	position_obstacle = chatterCallback(msg2);
-	
-
+	//geometry_msgs::Vector3Stamped position_obstacle;
+	//position_obstacle = chatterCallback(msg2);
+	//
 	// DISTANCE 
+	
 	int dist;
 	dist = sqrt(((position_car.x - position_obstacle.x)*(position_car.x - position_obstable.x))+((position_car.y - position_obstacle.y)*(position_car.y - position_obstable.y))+((position_car.z - position_obstacle.z)*(position_car.z - position_obstable.z));
-	
-	//STATUS 
-	
-
+	// SERVICE CON CUSTOM MESSAGE 
+	//STATUS --> ON CLIENT
 
 }
 
 
 int main(int argc, char **argv){
   	/*
+	OLD MAIN lla2enu
 	ros::init(argc, argv, "listener");
 	ros::NodeHandle n;
   	ros::Subscriber sub = n.subscribe("/swiftnav/front/gps_pose", 1000, chatterCallback);
