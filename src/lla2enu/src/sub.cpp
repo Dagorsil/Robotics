@@ -31,13 +31,16 @@ void chatterCallback(const sensor_msgs::NavSatFix::ConstPtr& msg){
   float longitude_init = 9.2947495255;
   float h0 = 231.506675163;*/
 	
-	ros::NodeHandle f;
-	f.getParam("/zeroPoint", latitude_init);
 	
-float latitude_init = 45.6311926152;
-  float longitude_init = 9.2947495255;
-  float h0 = 231.506675163;
-
+float latitude_init;
+  float longitude_init;
+  float h0;
+	
+	
+	ros::NodeHandle f;
+	f.getParam("/zeroLatitude", latitude_init);
+f.getParam("/zeroLongitude", longitude_init);
+	f.getParam("/zeroAltitude", h0);
 
   //lla to ecef
   float lamb = deg_to_rad*(latitude);
