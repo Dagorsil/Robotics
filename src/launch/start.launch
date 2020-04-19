@@ -1,8 +1,8 @@
 <launch>
 	<!-- IMPOSTARE VALORI INIZIALI -->
-	<param name="startLatitude" value="45.6311926152" />
-        <param name="startLongitude" value="9.2947495255" />
-	<param name="startAltitude" value="231.506675163" />
+	<param name="zeroLatitude" value="45.6311926152" />
+        <param name="zeroLongitude" value="9.2947495255" />
+	<param name="zeroAltitude" value="231.506675163" />
 
   <!-- NODES -->
   <node pkg="lla2enu" name="n1" type="sub"/>
