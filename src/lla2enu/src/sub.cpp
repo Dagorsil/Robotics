@@ -26,7 +26,15 @@ void chatterCallback(const sensor_msgs::NavSatFix::ConstPtr& msg){
   float h = msg->altitude;
 
   // fixed position
-  float latitude_init = 45.6311926152;
+	//USO PARAMETERS:
+  /*float latitude_init = 45.6311926152;
+  float longitude_init = 9.2947495255;
+  float h0 = 231.506675163;*/
+	
+	ros::NodeHandle f;
+	f.getParam("/zeroPoint", latitude_init);
+	
+float latitude_init = 45.6311926152;
   float longitude_init = 9.2947495255;
   float h0 = 231.506675163;
 
