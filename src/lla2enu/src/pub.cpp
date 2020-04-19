@@ -1,5 +1,6 @@
 #include "ros/ros.h"
 #include "geometry_msgs/Vector3Stamped.h"
+#include "std_msgs/String.h"
 #include <sstream>
 
 
@@ -12,7 +13,8 @@ int main(int argc, char **argv){
 	ros::Publisher pub2 = n.advertise<geometry_msgs::Vector3Stamped>("obstacle", 1000);
 
 	ros::Rate loop_rate(1);
-
+	
+	//PERCHE QUESTO COUNTER?	
 	int count = 0;
   
   
@@ -21,8 +23,10 @@ int main(int argc, char **argv){
 		geometry_msgs::Vector3Stamped msg1;
 		geometry_msgs::Vector3Stamped msg2;
 		
+		//PERCHE TIME?
 		msg1.header.stamp = ros::Time::now();
 		msg1.header.frame_id = "f1";
+		//PRENDI DA FILE BAG
 		msg1.vector.x = 1;
 		msg1.vector.y = 1;
 		msg1.vector.z = 1;
