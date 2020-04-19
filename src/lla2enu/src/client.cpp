@@ -20,7 +20,20 @@ int main(int argc, char **argv)
 
   ros::NodeHandle n;
   ros::ServiceClient client = n.serviceClient<service::ComputeDistance>("compute_distance");
+	
+	ros::Publisher distance_pub = n.advertise<ll2enu::Distance>("distance", 1000);
+	
+	
+	ros::Rate loop_rate(10);
+	
+	
   service::ComputeDistance a;
+	
+	
+	
+	
+	
+	
   a.request.car1; // = inserire valori;
   a.request.car2;
   a.request.car3;
@@ -28,6 +41,8 @@ int main(int argc, char **argv)
   a.request.obst1
   a.request.obst2
   a.request.obst3
+	  
+	  lla2enu::Distance s;
   
   if (client.call(a))
   {
@@ -36,17 +51,26 @@ int main(int argc, char **argv)
     
     lla2enu::distance dis= a.response.dist;
     //-1 = cash, 0= rschio, 1= sicuro
-    if (dis> par2)
+    if (s.dis> par2)
     {
-    	stato=1;
+    	s.stato=1;
 	}
-	else if (dis> par1 && dis< par2)
+	else if (s.dis> par1 && s.dis< par2)
     {
-    	stato=0;
+    	s.stato=0;
 	}
-	else if (dis< par1)
+	else if (s.dis< par1)
     {
-    	stato=-1;
+    	.stato=-1;
+	}
+	
+	while (ros::ok()){
+		distance_pub.publish(s);
+		
+		
+    		ros::spinOnce();
+
+    		loop_rate.sleep();
 	}
 
   }
