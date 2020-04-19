@@ -1,20 +1,14 @@
 <launch>
 	<!-- IMPOSTARE VALORI INIZIALI -->
-	<param name="latitude" value="" />
-        <param name="longitude" value="" />
-	<param name="altitude" value="" />
+	<param name="latitude" value="45.6311926152" />
+        <param name="longitude" value="9.2947495255" />
+	<param name="altitude" value="231.506675163" />
 
   <!-- NODES -->
-  <node pkg="parameter_test" name="param_first" type="param_first" output="screen"/>
+  <node pkg="lla2enu" name="n1" type="sub"/>
+	<node pkg="lla2enu" name="n2" type="pub"/>
+	
 
-  <group ns="turtlesim1">
-    <node pkg="turtlesim" name="sim" type="turtlesim_node"/>
-    <node pkg="turtlesim" name="teleop" type="turtle_teleop_key"/>
-  </group>
-
-  <node pkg="turtlesim" name="mimic" type="mimic">
-    <remap from="input" to="turtlesim1/turtle1"/>
-    <remap from="output" to="turtlesim2/turtle1"/>
   </node>
 
 </launch>
