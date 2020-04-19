@@ -113,33 +113,20 @@ void callback(const geometry_msgs::Vector3StampedConstPtr& msg1, const geometry_
 	//
 	// DISTANCE 
 	
+	
+	/*
 	// la variabile deve essere del tipo custom message creato: distance
 	custom_messages::distance dist;
 	
 	//ATTENZIONE: controllare num. parentesi, ne ho aggiunta una
 	dist = sqrt(((position_car.x - position_obstacle.x)*(position_car.x - position_obstable.x))+((position_car.y - position_obstacle.y)*(position_car.y - position_obstable.y))+((position_car.z - position_obstacle.z)*(position_car.z - position_obstable.z)));
-	
+	*/
 	
 	//CONTROLLO CRASH,    ATTENZIONE: SCRIVERE CODICE QUANDO UGUALE A 1M O 5M)
 	// leggo i parametri par1= 1m e par2= 5m 
 	
 	//ilflag è di tipo custom message: 1=sicuro, 0= non sicuro, -1= cash
-	custom_messages::status stato;
 	
-	if (dist > par2)
-	{
-		stato = 1;
-	}
-		
-	else if (par1<dist && dist<par2)
-	{
-		stato = 0;
-	}
-	
-	else if if (dist<par1)
-	{
-		stato = -1;
-	}
 		
 
 	
