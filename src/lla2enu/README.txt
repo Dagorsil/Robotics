@@ -11,7 +11,8 @@ controllare rate (10)
 
 
 //MSG
-NEL MSG IL FLAG LO VUOLE INTERO O UNA STRINGA?(TPO "CRASH");
+NEL MSG IL FLAG LO VUOLE come STRINGA (TPO "CRASH"); forse si usa string data
+
 Ho il dubbio se nel cMke file, va inserito custom_message_generate_messages_cpp OPPURE lla2enu_generate_messages_cpp
 
 
